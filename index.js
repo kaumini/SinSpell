@@ -24,9 +24,6 @@ window.spellchecker = spellchecker;
 
 window.checkSpell = function () {
     var texttocheck = document.getElementById("TextToCheck").value;
-
-    const word_array = ["ශ්‍රවනාගාරය","දැණුම","පලපුරුද්ද","නිශ්පාදන", "ලමය"]
-    
     const UIHandler = require('./UIHandler')
     UIHandler("output",texttocheck.split(' '))
 }
