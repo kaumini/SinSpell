@@ -1,4 +1,4 @@
-var Spellchecker = require("Hunspell-spellchecker");
+var Spellchecker = require("hunspell-spellchecker");
 var fs = require('fs')
 var spellchecker = new Spellchecker();
 
@@ -20,10 +20,15 @@ if(!isRight){
 }
 console.log(isRight);
 
+window.spellchecker = spellchecker;
+
 window.checkSpell = function () {
     var texttocheck = document.getElementById("TextToCheck").value;
-    console.log(texttocheck);
-    document.getElementById("resultText").value = texttocheck;
+
+    const word_array = ["ශ්‍රවනාගාරය","දැණුම","පලපුරුද්ද","නිශ්පාදන", "ලමය"]
+    
+    const UIHandler = require('./UIHandler')
+    UIHandler("output",texttocheck.split(' '))
 }
 
 //var btn = document.getElementById("btn");

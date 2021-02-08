@@ -1,0 +1,40 @@
+const popperJs = require('@popperjs/core')
+
+window.updateText = function (target,text){
+    window.spellchecktmp.word_array[target] = text
+    window.render(window.spellchecktmp.target,window.spellchecktmp.word_array)
+    document.getElementById('popup').innerHTML = ""
+}
+
+window.popupShow = function (target,text){
+    const word_list = window.spellchecker.suggest(text,4)
+    let output_list = "<ul class='suggetion'>"
+    for (const word of word_list) {
+        output_list += `<li onClick="window.updateText(${target},'${word}')">${word}</li>`
+    }
+    output_list + "</ul>"
+
+    const targetObj = document.getElementById('w_'+target)
+    const tooltip = document.getElementById('popup')
+    tooltip.innerHTML = output_list
+    popperJs.createPopper(targetObj,tooltip,{
+        placement: 'bottom',
+    })
+}
+
+window.render = function (target,word_array){
+    let output = ""
+    for (const index in word_array) {
+        const word = word_array[index]
+        if (!window.spellchecker.check(word)){
+            output += `<span class="invalid" id="w_${index}" onClick="window.popupShow(${index},'${word}')">${word}</span> `
+        }else{
+            output += word+' '
+        }
+        
+    }
+    window.spellchecktmp = {target,word_array}
+    document.getElementById(target).innerHTML = output
+}
+
+module.exports = window.render
