@@ -2,13 +2,16 @@
   "name": "website_new",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "hunspell-spellchecker": "^1.0.2"
+    "brfs": "^2.0.2",
+    "fs": "0.0.1-security",
+    "hunspell-spellchecker": "^1.0.2",
+    "requirejs": "^2.3.6"
   }
 }

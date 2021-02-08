@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SinSpell</title>
-    <script src="index.js"></script>
+    <script src="bundle.js"></script>
 </head>
 <body>
-    <form id="input">
-        Text to Check: <input type="text" name="ttc"><br>
-        <input type="submit" onclick="checkSpell();return false" value="Submit">
+    <form id="input" onsubmit="checkSpell();return false">
+        Text to Check: <input type="text" id="TextToCheck" name="ttc"><br>
+        <input id="btn" type="submit" value="Submit">
     </form>
+
+    <textarea id="resultText" cols="200">
+    </textarea>
 </body>

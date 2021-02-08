@@ -2042,11 +2042,17 @@ if(!isRight){
 }
 console.log(isRight);
 
-function checkSpell() {
-    console.log("submitted");
-    document.getElementById("input").submit();
+window.checkSpell = function () {
+    var texttocheck = document.getElementById("TextToCheck").value;
+    console.log(texttocheck);
+    document.getElementById("resultText").value = texttocheck;
 }
 
+//var btn = document.getElementById("btn");
+//if(btn){
+//    console.log("test");
+//    btn.addEventListener("click", checkSpell, false);
+//}
 }).call(this)}).call(this,require("buffer").Buffer)
 },{"Hunspell-spellchecker":6,"buffer":2}],5:[function(require,module,exports){
 
