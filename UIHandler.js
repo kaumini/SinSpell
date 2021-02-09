@@ -7,7 +7,7 @@ window.updateText = function (target,text){
 }
 
 window.popupShow = function (target,text){
-    const word_list = window.spellchecker.suggest(text,4)
+    const word_list = window.spellchecker.suggest(text,10)
     let output_list = "<ul class='suggetion'>"
     for (const word of word_list) {
         output_list += `<li onClick="window.updateText(${target},'${word}')"><span style="background-color: #FFFF00">${word}</span></li>`
