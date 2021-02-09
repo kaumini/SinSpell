@@ -2,3 +2,10 @@
     color: red;
     text-decoration: underline;
 }
+.autocorrect {
+    color: blue;
+}
+.mytext {
+    width: 1500px;
+    height: 500px;
+}

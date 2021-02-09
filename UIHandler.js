@@ -10,7 +10,7 @@ window.popupShow = function (target,text){
     const word_list = window.spellchecker.suggest(text,4)
     let output_list = "<ul class='suggetion'>"
     for (const word of word_list) {
-        output_list += `<li onClick="window.updateText(${target},'${word}')">${word}</li>`
+        output_list += `<li onClick="window.updateText(${target},'${word}')"><span style="background-color: #FFFF00">${word}</span></li>`
     }
     output_list + "</ul>"
 
@@ -26,7 +26,10 @@ window.render = function (target,word_array){
     let output = ""
     for (const index in word_array) {
         const word = word_array[index]
-        if (!window.spellchecker.check(word)){
+        if (incorrectlist1.includes(word)){
+            position = incorrectlist1.indexOf(word);
+            output += `<span class="autocorrect">${correctlist1[position]}</span> `
+        }else if (!window.spellchecker.check(word)){
             output += `<span class="invalid" id="w_${index}" onClick="window.popupShow(${index},'${word}')">${word}</span> `
         }else{
             output += word+' '
