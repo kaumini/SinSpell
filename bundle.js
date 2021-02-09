@@ -2232,16 +2232,29 @@ window.popupShow = function (target,text){
 window.render = function (target,word_array){
     let output = ""
     for (const index in word_array) {
-        const word = word_array[index]
-        if (incorrectlist1.includes(word)){
-            position = incorrectlist1.indexOf(word);
-            output += `<span class="autocorrect">${correctlist1[position]}</span> `
-        }else if (!window.spellchecker.check(word)){
-            output += `<span class="invalid" id="w_${index}" onClick="window.popupShow(${index},'${word}')">${word}</span> `
+        var word = word_array[index]
+        if(word.includes(".")){
+            word = word.replace(".", "");
+            if (incorrectlist1.includes(word)){
+                position = incorrectlist1.indexOf(word);
+                output += `<span class="autocorrect">${correctlist1[position]}</span> `
+                output += '.'
+            }else if (!window.spellchecker.check(word)){
+                output += `<span class="invalid" id="w_${index}" onClick="window.popupShow(${index},'${word}')">${word}</span> `
+                output += '.'
+            }else{
+                output += word+'.'+' '
+            }
         }else{
-            output += word+' '
-        }
-        
+            if (incorrectlist1.includes(word)){
+                position = incorrectlist1.indexOf(word);
+                output += `<span class="autocorrect">${correctlist1[position]}</span> `
+            }else if (!window.spellchecker.check(word)){
+                output += `<span class="invalid" id="w_${index}" onClick="window.popupShow(${index},'${word}')">${word}</span> `
+            }else{
+                output += word+' '
+            }
+        }  
     }
     window.spellchecktmp = {target,word_array}
     document.getElementById(target).innerHTML = output
